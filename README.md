@@ -44,10 +44,10 @@ The output will be in JSON format with lowercase-first camel case field names. T
 
 The repository includes an example of a Form Processing Agent. The prompt demonstrates how to request extraction of various fields from a PDF document, including:
 
-* [cite_start]**From Page Header:** `SB No`.
-* [cite_start]**From "PART-I - SHIPPING BILL SUMMARY" section "A STATUS" sub-section:** `6.DBK`, `7.RODTP`.
+* **From Page Header:** `SB No`.
+* **From "PART-I - SHIPPING BILL SUMMARY" section "A STATUS" sub-section:** `6.DBK`, `7.RODTP`.
 * **From "PART-I - SHIPPING BILL SUMMARY" section "C.VALU SUMMA" sub-section:** `5.COM`.
-* [cite_start]**From "PART-I - SHIPPING BILL SUMMARY" section "D.EX.PR." sub-section:** `1.DBK CLAIM`, `5.RODTEP AMT`.
+* **From "PART-I - SHIPPING BILL SUMMARY" section "D.EX.PR." sub-section:** `1.DBK CLAIM`, `5.RODTEP AMT`.
 * **From "PART-I - SHIPPING BILL SUMMARY" section "F.INVOICE SUMMARY" sub-section (all records):** `1.SNO`, `2.INV NO`, `3. [cite_start]INV AMT`, `4.CURRENC`.
 * **From "PART - IV - EXPORT SCHEME DETAILS" section "A. DRAWBACK & ROSL CLAIM" sub-section (all records):** `1.INV SNO`, `2.ITEM SNO`, `6.RATE`, `7.DBK AMT`.
 
