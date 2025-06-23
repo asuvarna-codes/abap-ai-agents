@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZGOOG_CL_FORM_PROCESSOR_AGENT</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Generic form processor agent</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>SET_FORM_GCS_URI</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Set form to be processed (GCS URI)</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+   <DESCRIPTIONS_SUB>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_FORM_GCS_URI</CMPNAME>
+     <SCONAME>IV_FILE_URI</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>GCS File URI</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>SET_FORM_GCS_URI</CMPNAME>
+     <SCONAME>IV_MIME_TYPE</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Mime Type</DESCRIPT>
+    </SEOSUBCOTX>
+   </DESCRIPTIONS_SUB>
+  </asx:values>
+ </asx:abap>
+</abapGit>

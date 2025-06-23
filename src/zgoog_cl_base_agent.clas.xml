@@ -13,17 +13,138 @@
    </VSEOCLASS>
    <DESCRIPTIONS>
     <SEOCOMPOTX>
-     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <CMPNAME>GET_CLIENT_KEY</CMPNAME>
      <LANGU>E</LANGU>
-     <DESCRIPT>CONSTRUCTOR</DESCRIPT>
+     <DESCRIPT>DEFAULT: Subclass to provide the specific client key</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_MODEL_KEY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>DEFAULT: Subclass to provide the specific model key</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_SYSTEM_INSTRUCTION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>DEFAULT: Subclass to provide the system instruction</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>GET_TOOL_DEFINITIONS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>DEFAULT: Subclass to provide the tool definitions</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>INITIALIZE_AGENT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Helper to ensure initialization happens once</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MO_GEMINI_MODEL</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Model class for Gemini</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>MT_TOOLS_REGISTERED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Keep track of registered tools</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>PROCESS_PROMPT</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Processes a user prompt and returns the agent&apos;s response.</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TT_TOOL_DEFINITIONS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table for defining agent tools (ABAP Functions/Methods)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TT_TOOL_PARAMETERS</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Tool parameters (Table)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TY_TOOL_DEFINITION</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Type for defining agent tools (ABAP Functions/Methods)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CMPNAME>TY_TOOL_PARAMETER</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Tool parameters (Structure)</DESCRIPT>
     </SEOCOMPOTX>
    </DESCRIPTIONS>
    <DESCRIPTIONS_SUB>
     <SEOSUBCOTX>
-     <CMPNAME>CONSTRUCTOR</CMPNAME>
+     <CMPNAME>GET_CLIENT_KEY</CMPNAME>
      <SCONAME>/GOOG/CX_SDK</SCONAME>
      <LANGU>E</LANGU>
      <DESCRIPT>ABAP SDK for Google Cloud: Exception Class</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_CLIENT_KEY</CMPNAME>
+     <SCONAME>R_RESULT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Google Cloud Key Name</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_MODEL_KEY</CMPNAME>
+     <SCONAME>/GOOG/CX_SDK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP SDK for Google Cloud: Exception Class</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_MODEL_KEY</CMPNAME>
+     <SCONAME>R_RESULT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Model Key</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_SYSTEM_INSTRUCTION</CMPNAME>
+     <SCONAME>/GOOG/CX_SDK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP SDK for Google Cloud: Exception Class</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_SYSTEM_INSTRUCTION</CMPNAME>
+     <SCONAME>R_RESULT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>System Instruction</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_TOOL_DEFINITIONS</CMPNAME>
+     <SCONAME>/GOOG/CX_SDK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP SDK for Google Cloud: Exception Class</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>GET_TOOL_DEFINITIONS</CMPNAME>
+     <SCONAME>R_RESULT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Table for defining agent tools (ABAP Functions/Methods)</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>INITIALIZE_AGENT</CMPNAME>
+     <SCONAME>/GOOG/CX_SDK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP SDK for Google Cloud: Exception Class</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS_PROMPT</CMPNAME>
+     <SCONAME>/GOOG/CX_SDK</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>ABAP SDK for Google Cloud: Exception Class</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS_PROMPT</CMPNAME>
+     <SCONAME>IV_PROMPT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>The user&apos;s input prompt</DESCRIPT>
+    </SEOSUBCOTX>
+    <SEOSUBCOTX>
+     <CMPNAME>PROCESS_PROMPT</CMPNAME>
+     <SCONAME>R_RESULT</SCONAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Return&apos;s the agent&apos;s final text response</DESCRIPT>
     </SEOSUBCOTX>
    </DESCRIPTIONS_SUB>
   </asx:values>

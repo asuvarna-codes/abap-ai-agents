@@ -1,13 +1,67 @@
 class ZGOOG_CL_BASE_AGENT definition
   public
+  abstract
   create public .
 
 public section.
 
-  methods CONSTRUCTOR
+  types:
+      "! Structure for defining agent tools (ABAP Functions/Methods)
+    BEGIN OF ty_tool_parameter,
+        name        TYPE string,
+        type        TYPE string, " e.g., 'string', 'number', 'integer', 'boolean', 'array', 'object'
+        description TYPE string,
+        is_required TYPE boolean,
+      END OF ty_tool_parameter .
+  types:
+    tt_tool_parameters TYPE STANDARD TABLE OF ty_tool_parameter WITH EMPTY KEY .
+  types:
+    BEGIN OF ty_tool_definition,
+        name           TYPE string,             " Name of the Function Module or Method (as registered)
+        description    TYPE string,
+        parameters     TYPE tt_tool_parameters,
+        implementation TYPE string,             " Function Module name or Class-Method name (for reference)
+      END OF ty_tool_definition .
+  types:
+    tt_tool_definitions TYPE STANDARD TABLE OF ty_tool_definition WITH EMPTY KEY .
+
+  methods GET_MODEL_KEY
+  ABSTRACT
+    returning
+      value(R_RESULT) type /GOOG/MODEL_KEY
+    raising
+      /GOOG/CX_SDK .
+  methods GET_SYSTEM_INSTRUCTION
+  ABSTRACT
+    returning
+      value(R_RESULT) type STRING
+    raising
+      /GOOG/CX_SDK .
+  methods GET_TOOL_DEFINITIONS
+  ABSTRACT
+    returning
+      value(R_RESULT) type TT_TOOL_DEFINITIONS
+    raising
+      /GOOG/CX_SDK .
+  methods PROCESS_PROMPT
+    importing
+      !IV_PROMPT type STRING
+    returning
+      value(R_RESULT) type STRING
+    raising
+      /GOOG/CX_SDK .
+  methods GET_CLIENT_KEY
+    returning
+      value(R_RESULT) type /GOOG/KEYNAME
+    raising
+      /GOOG/CX_SDK .
+  methods INITIALIZE_AGENT
     raising
       /GOOG/CX_SDK .
 protected section.
+
+  data MO_GEMINI_MODEL type ref to /GOOG/CL_GENERATIVE_MODEL .
+  data MT_TOOLS_REGISTERED type TT_TOOL_DEFINITIONS .
 private section.
 ENDCLASS.
 
@@ -16,42 +70,43 @@ ENDCLASS.
 CLASS ZGOOG_CL_BASE_AGENT IMPLEMENTATION.
 
 
-  METHOD constructor.
+  METHOD get_client_key.
 
-*    DATA(lv_model_id) = get_model_id( ). " Call abstract method
-*    DATA(lv_system_instruction) = get_system_instruction( ). " Call abstract method
-*    DATA(lt_tools) = get_tool_definitions( ). " Call abstract method
-*    DATA(ls_inline_data) = get_inline_data( ). "Call abstract method
-*
-*    TRY.
-*        " 1. Create the Model Instance
-*        me->mo_model = NEW #( iv_model_key = lv_model_id ).
-*
-*        " 2. Set System Instructions
-*        mo_model->set_system_instructions( lv_system_instruction ).
-*
-*        " mo_model->set_generation_config( iv_response_mime_type = 'application/json'   ).
-*
-*        " 3. Register Tools (Function Declarations) if any
-*        IF lt_tools IS NOT INITIAL.
-*          register_tools( lt_tools ).
-*          "mo_model->set_auto_invoke_sap_function( abap_true ).
-*        ENDIF.
-*
-*        " 4. Set Inline Data is available
-*        IF ls_inline_data IS NOT INITIAL.
-*          mo_model->set_inline_data( iv_mime_type          = ls_inline_data-mime_type
-*                                     iv_data               = ls_inline_data-file_data
-*                                     iv_video_start_offset = ls_inline_data-video_start_offset
-*                                     iv_video_end_offset   = ls_inline_data-video_end_offset ).
-*        ENDIF.
-*
-*        mv_is_initialized = abap_true.
-*
-*      CATCH /goog/cx_sdk INTO DATA(lx_sdk).
-*        " Log exception or handle appropriately
-*        RAISE EXCEPTION lx_sdk.
-*    ENDTRY.
+    DATA lv_model_key TYPE /goog/model_key.
+    DATA lx_sdk TYPE REF TO /goog/cx_sdk.
+
+    lv_model_key = me->get_model_key( ).
+
+    SELECT SINGLE client_key INTO r_result
+      FROM /goog/ai_config
+      WHERE model_key = lv_model_key.
+
+    IF sy-subrc <> 0.
+      lx_sdk = NEW /goog/cx_sdk( msgtx = 'Client key not found' ).
+      RAISE EXCEPTION lx_sdk.
+    ENDIF.
+
+
+  ENDMETHOD.
+
+
+  METHOD initialize_agent.
+
+    me->mo_gemini_model = NEW /goog/cl_generative_model( iv_model_key = me->get_model_key( ) ).
+
+    me->mo_gemini_model->set_system_instructions( get_system_instruction( ) ).
+
+
+  ENDMETHOD.
+
+
+  METHOD process_prompt.
+
+    " Generate content using the prompt
+    DATA(lo_response) = mo_gemini_model->generate_content( iv_prompt_text = iv_prompt ).
+
+    " Get the final text response
+    r_result = lo_response->get_text( ).
 
   ENDMETHOD.
 ENDCLASS.
