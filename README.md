@@ -1,4 +1,4 @@
-# ABAP AI Agents
+# ABAP AI Agents 🤖
 
 This repository contains an ABAP AI agent framework that integrates with Google Cloud's Vertex AI SDK to leverage Gemini for intelligent document processing. The framework is designed to enable SAP systems to interact with AI models, specifically for tasks like form data extraction.
 
